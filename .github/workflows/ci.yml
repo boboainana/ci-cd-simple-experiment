@@ -22,11 +22,27 @@ jobs:
         
     - name: ✅ 完成
       run: echo "🎉 CI/CD 实验成功！"
-- name: 📦 打包构建
-  run: |
-    echo "正在打包..."
-    mkdir -p dist
-    cp index.html dist/
-    cp style.css dist/ 2>/dev/null || true
-    cp script.js dist/ 2>/dev/null || true
-    echo "✅ 打包完成！"
+    - name: 📦 打包构建
+      run: |
+        echo "正在打包..."
+        mkdir -p dist
+        cp index.html dist/
+        cp style.css dist/ 2>/dev/null || true
+        cp script.js dist/ 2>/dev/null || true
+        echo "✅ 打包完成！"
+deploy:
+  name: 🚀 部署到GitHub Pages
+  needs: [quality-check]  # 依赖测试任务
+  if: success() && github.ref == 'refs/heads/main'
+  runs-on: ubuntu-latest
+  
+  steps:
+    - name: 🚚 检出代码
+      uses: actions/checkout@v4
+      
+    - name: 🎯 部署
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+        publish_branch: gh-pages
