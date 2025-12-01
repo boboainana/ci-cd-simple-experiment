@@ -1,0 +1,24 @@
+name: Simple CI
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 🎉 开始
+      run: echo "🚀 CI/CD 流水线开始！"
+      
+    - name: 📁 显示文件
+      run: |
+        echo "项目文件:"
+        ls -la
+        echo ""
+        echo "当前时间: $(date)"
+        
+    - name: ✅ 完成
+      run: echo "🎉 CI/CD 实验成功！"
