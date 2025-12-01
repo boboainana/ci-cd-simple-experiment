@@ -30,19 +30,19 @@ jobs:
         cp style.css dist/ 2>/dev/null || true
         cp script.js dist/ 2>/dev/null || true
         echo "✅ 打包完成！"
-deploy:
-  name: 🚀 部署到GitHub Pages
-  needs: [quality-check]  # 依赖测试任务
-  if: success() && github.ref == 'refs/heads/main'
-  runs-on: ubuntu-latest
-  
-  steps:
-    - name: 🚚 检出代码
-      uses: actions/checkout@v4
+   deploy:
+     name: 部署到Github Pages
+     needs: [test]  # 依赖测试任务
+     if: success() && github.ref == 'refs/heads/main'
+     runs-on: ubuntu-latest
+    
+     steps:
+      - name: 检查代码
+        uses: actions/checkout@v4
       
-    - name: 🎯 部署
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
-        publish_branch: gh-pages
+      - name: 部署
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
