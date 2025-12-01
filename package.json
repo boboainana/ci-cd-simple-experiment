@@ -1,0 +1,12 @@
+{
+  "name": "ci-cd-simple",
+  "version": "1.0.0",
+  "description": "最简单的CI/CD实验项目",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo '✅ 测试通过！' && exit 0"
+  },
+  "keywords": ["ci-cd", "github-actions"],
+  "author": "CI/CD Learner",
+  "license": "MIT"
+}

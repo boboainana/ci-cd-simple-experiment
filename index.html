@@ -1,0 +1,47 @@
+cat > index.html << 'EOF'
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CI/CD 简单实验</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        .box {
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            background: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎯 CI/CD 简单实验</h1>
+    
+    <div class="box">
+        <div class="success">✅ CI/CD 配置成功！</div>
+        <p>每次你推送代码到 GitHub，都会自动运行 CI/CD 流水线。</p>
+    </div>
+    
+    <div class="box">
+        <h3>查看 CI/CD 状态：</h3>
+        <ol>
+            <li>打开 GitHub 仓库页面</li>
+            <li>点击顶部的 <strong>"Actions"</strong> 选项卡</li>
+            <li>查看绿色 ✅ 表示成功</li>
+        </ol>
+    </div>
+</body>
+</html>
+EOF
