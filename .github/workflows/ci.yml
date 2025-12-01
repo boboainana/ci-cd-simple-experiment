@@ -22,3 +22,11 @@ jobs:
         
     - name: ✅ 完成
       run: echo "🎉 CI/CD 实验成功！"
+- name: 📦 打包构建
+  run: |
+    echo "正在打包..."
+    mkdir -p dist
+    cp index.html dist/
+    cp style.css dist/ 2>/dev/null || true
+    cp script.js dist/ 2>/dev/null || true
+    echo "✅ 打包完成！"
